@@ -1,0 +1,17 @@
+	<h1>{{lng.settings}}</h1>
+
+	<form class="form" >
+	<table class="formtbl">
+		<tr><td class="formtxt">{{lng.title}}: </td><td class="formval">
+			<div ge-edit="form.title" ge-func="savedb" ge-field="name" ge-callback="updbname" ge-class="form-control wbig"></div></td></tr>
+		<!--tr><td class="formtxt">{{lng.language}}: </td><td class="formval"><select ng-model="form.dblang"  class="form-control" ng-change="language()">
+<option ng-repeat="item in langlist" value="{{item.code}}" ng-selected="item.code==cfg.dblang">{{item.native}}</a>
+		</select></td></tr-->
+		<tr><td class="formtxt">{{lng.showalias}}: </td><td class="formval">
+			<div ge-check="form.isalias" ge-func="changealias"></div>
+			</td></tr>
+
+		<!--tr><td class="formtxt">{{lng.apitoken}}: </td><td class="formval">
+			<div ge-edit="form.apitoken" ge-func="savedb" ge-field="apitoken" ge-class="form-control wbig"></div></td></tr-->
+	</table>
+	</form>

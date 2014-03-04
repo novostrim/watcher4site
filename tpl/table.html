@@ -1,0 +1,11 @@
+<h1>{{db.title}}</h1>
+
+<a ng-href="#/edititem?table={{db.id}}"  class="flatbtn"><i class="fa fa-plus-circle fa-lg"></i>&nbsp;&nbsp;{{lng.newitem}}</a>
+
+<table cellpadding="0" cellspacing="0" class="table">
+	<tr><th style="width: 50px;border: 0;"></th><th><input type="checkbox" ng-model="allselect"></th><th ng-repeat="cols in columns">{{cols.title}}</th></tr>
+	<tr id="{{$index}}" ng-mouseenter="mouseenter( $index )" ng-mouseleave="mouseleave()" ng-repeat="item in items" ng-class-odd="'strip'">
+		<td style='text-align:right'><div class="fabtn-group" style="display:none;"><a href="" ng-click="editi(item.id)" class="fabtn"><i class="fa fa-pencil fa-fw"></i></a><a href="" ngx-click="edit( item.id )" class="fabtn"><i class="fa fa-ellipsis-h fa-fw"></i></a></div><span class="idtext">{{item.id}}</span></td><td><input type="checkbox" ng-model="item.selected"></td>
+		 <td ng-repeat="icol in columns" ng-class='icol.class'>{{item[icol.alias]}}</td>
+	</tr>
+</table>

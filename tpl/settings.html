@@ -1,0 +1,22 @@
+<div class="workarea" ng-controller="SettingsCtrl" >
+	<h1>{{lng.accsettings}}</h1>
+
+	<form class="form" >
+	<table class="formtbl">
+		<tr><td class="formtxt">{{lng.language}}: </td><td class="formval"><select ng-model="form.lang"  class="form-control" ng-change="language()">
+<option ng-repeat="item in langlist" value="{{item.code}}" ng-selected="item.code==lng.code">{{item.native}}</a>
+		</select></td></tr>
+		<tr><td class="formtxt">{{lng.email}}: </td><td class="formval">
+			<div ge-edit="form.email" ge-func="saveusr" ge-field="email" class="popupedit" ge-class="form-control wnormal"></div>
+			<!--input type="text" ng-model="form.email" class="form-control"--></td></tr>
+		<tr><td class="formtxt">{{lng.nickname}}: </td><td class="formval">
+			<div ge-edit="form.login" ge-func="saveusr" class="popupedit" ge-field="login" ge-class="form-control wnormal" ge-callback="updateuser"></div></td></tr>
+
+		<tr><td class="formtxt">{{lng.password}}: </td><td class="formval">
+			<div ge-edit="form.pass" ge-func="saveusr" class="popupedit" ge-field="pass" ge-class="form-control wnormal" ge-callback="updatepass"></div>
+		</td></tr>
+	</table>
+
+
+	</form>
+</div>

@@ -1,0 +1,36 @@
+<div class="workarea" ng-controller="ReportCtrl" >
+<table cellspacing="0" cellpadding="0" border="0" ng-show="info.ok" class="tbl">
+	<tr><td align="right">{{lng.status}}:</td><td><span ng-show="info.ok==1">{{lng.finished}}</span>
+		<span ng-show="info.ok==2">{{lng.inproc}} <i class="fa fa-spinner fa-spin"></i> </span>
+		<span ng-show="info.ok==3">{{lng.notfinished}}</span> [{{info.lastrun}}]</td></tr>
+	<tr><td align="right">{{lng.checkfiles}}:</td><td>{{info.numfiles}} [<span ng-show="info.changes">{{lng.changes}}: {{info.changes}}</span><span ng-show="info.changes==0">{{lng.nochanges}}</span>]</td></tr>
+	<tr ng-show="form.ext"><td align="right">{{lng.checkext}}:</td><td>{{form.ext}}</td></tr>
+	<tr><td align="right">{{lng.comphash}}:</td><td><span ng-show="form.hash">{{lng.yes}}</span>
+		<span ng-show="form.hash==0">{{lng.no}}</span></td></tr>
+	<tr ng-show="form.ignext"><td align="right">{{lng.ignoreext}}:</td><td>{{form.ignext}}</td></tr>
+	<tr ng-show="form.ignpath"><td align="right">{{lng.ignorepaths}}:</td><td>{{form.ignpath}}</span></td></tr>
+</table>
+<table class="form"><tr valign="top" align="left"><td style="padding: 5px 20px 5px 0px;"><a href="#" class="btn btn-primary" ng-click="clearreport()">{{lng.clearreport}}</a>
+</td><td><i>{{lng.repcomment}} {{uptime}}</i></td></table>
+<div class="clear"></div>
+<table cellspacing="0" cellpadding="0" border="0" class="table">
+	<tr><th></th><th>{{lng.name}}</th><th>{{lng.timecheck}}</th><th>{{lng.timemod}}</th>
+		<th>{{lng.size}}</th><th>{{lng.perm}}</th><th ng-if="form.hash">{{lng.md5hash}}</th></tr>
+	<tr valign="top" ng-repeat="item in items"><td>
+		<i class="fa fa-plus" ng-if="item.status==3"></i>
+		<i class="fa fa-pencil" ng-if="item.status==2"></i>
+		<i class="fa fa-times" ng-if="item.status==1"></i>
+	</td><td align="left">{{item.name}}</td><td align="left">{{item.uptime}}<br>{{item.nuptime}}</td>
+<td align="left" ng-class="{wrong: item.timeok==0}">{{item.time}}<br>{{item.ntime}}</td><td align="right" ng-class="{wrong: item.sizeok==0}">{{item.size}}<br>{{item.nsize}}</td><td align="right" ng-class="{wrong: item.permok==0}">{{item.perm}}<br>{{item.nperm}}</td><td align="center" valign="middle" ng-if="form.hash"><span ng-if="item.hashok==-1" style="color: #f00;"><i class="fa fa-warning"></i></span>
+<i class="fa fa-question" ng-if="item.hashok==0"></i>
+<i class="fa fa-check" ng-if="item.hashok==1"></i></td></tr>
+</table>
+<div class="pages">
+	<div class="ipage" ng-repeat="page in pages.plist"><span ng-if="page.0==pages.curpage">{{page.0}}</span>
+		<a ng-href="{{page.1}}" ng-if="page.0==-1 && page.1"><i class="fa fa-arrow-left"></i></a>
+		<a ng-href="{{page.1}}" ng-if="page.0>0 && page.1">{{page.0}}</a>
+		<i ng-if="page.0==0" class="fa fa-ellipsis-h dots" ></i>
+		<a ng-href="{{page.1}}" ng-if="page.0==-2 && page.1"><i class="fa fa-arrow-right"></i></a>
+	</div>
+</div>
+</div> 

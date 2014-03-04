@@ -1,0 +1,96 @@
+
+
+// Default settings
+
+// Colors
+
+@calink: #0066CC; // the color of links
+@cbody: #fff;   
+@cbacktf: #006BB7;//6D6957;//#777; // The color of the background ( header and footer )
+@cdivback: #F2ECDC; // form and div background
+@cblue: #006BB7;
+@cbtn: #999;  // btn border
+@cbtnback: #eee;  // btn focus
+@cbtnbg: #fff;  // btn background
+@cflat: #009B9B; 
+@cgrey9: #999;
+@ch: #89826C;
+@ciback: #fff;   // background of the input
+@ciborder: #ccc;   // background of the input
+@cformtext: #0094FF;// #004A7F;
+@cgreya: #aaa;
+@clink: #0066CC; // The color of links
+@clinktf: #91E1FF; // The color of links ( header & footer )
+@cred: #f00;
+@cstrip: #f0f0f0;
+@ctext: #333;   // The color of the text
+@ctexttf: #fff; // The color of the text ( header & footer )
+@cth: #32A800;//#FF6A00;    // The color of TH
+@cthtext: #fff;   // The color of TH text 
+@ctitle: @cbacktf;  // The color of the title
+@cyellow: #FFD400;
+@cwhite: #fff;
+
+// Font size
+
+@flarge: 26px; // huge size
+@fbig: 16px; // big size
+@fnormal: 14px; // Standard size 
+@fsmall: 12px;  // Small size
+
+// Div sizes
+
+@sdash: 250px;
+@sradius: 10px;
+@ssradius: 5px;
+@sshadow: 10px;
+@swidth: 1024px; // standard max-width;
+
+@brand-primary:         #428bca;
+@brand-warning:         #f0ad4e;
+
+@btn-default-color:              #333;
+@btn-default-bg:                 #fff;
+@btn-default-border:             #ccc;
+
+@btn-primary-color:              #fff;
+@btn-primary-bg:                 @brand-primary;
+@btn-primary-border:             darken(@btn-primary-bg, 5%);
+
+@btn-warning-color:              #fff;
+@btn-warning-bg:                 @brand-warning;
+@btn-warning-border:             darken(@btn-warning-bg, 5%);
+
+// Button variants
+.button-variant( @color, @background, @border ) {
+  color: @color;
+  background-color: @background;
+  border-color: @border;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.active,
+  .open .dropdown-toggle& {
+    color: @color;
+    background-color: darken(@background, 8%);
+        border-color: darken(@border, 12%);
+  }
+  &:active,
+  &.active,
+  .open .dropdown-toggle& {
+    background-image: none;
+  }
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    &,
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+      background-color: @background;
+          border-color: @border
+    }
+  }
+}

@@ -1,0 +1,26 @@
+
+.box-shadow (@x: 0, @y: 0, @blur: 1px, @color: #000) {
+  box-shadow: @arguments;
+  -moz-box-shadow: @arguments;
+  -webkit-box-shadow: @arguments;
+}
+
+.box-shadow-inset( @x: 0, @y: 0, @blur: 1px, @color: #000) {
+  box-shadow: inset @arguments;
+  -moz-box-shadow: inset @arguments;
+  -webkit-box-shadow: inset @arguments;
+}
+
+.back-gradient ( @x: left, @from, @to ) {
+   background: @to; /* for old browsers */
+   background: -moz-linear-gradient( @x, @from, @to); /* Firefox 3.6+ */
+   /* Chrome 1-9, Safari 4-5 */
+   background: -webkit-gradient( linear, left top, left bottom, 
+                color-stop(0%, @from ), color-stop(100%, @to ));
+    /* Chrome 10+, Safari 5.1+ */
+    background: -webkit-linear-gradient( @x, @from, @to );
+    background: -o-linear-gradient( @x, @from, @to ); /* Opera 11.10+ */
+    background: -ms-linear-gradient( @x, @from, @to ); /* IE10 */
+    background: linear-gradient( @x, @from, @to); 
+    background: linear-gradient( @x, @from, @to );
+}
