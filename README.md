@@ -6,7 +6,7 @@ To get started, check out [http://www.novostrim.com](http://www.novostrim.com)!
 
 ## Bugs and feature requests
 
-Have a bug or a feature request? [Please open a new issue](https://github.com/novostrim/issues). 
+Have a bug or a feature request? [Please open a new issue](https://github.com/novostrim/watcher4site/issues). 
 
 ## Authors
 
