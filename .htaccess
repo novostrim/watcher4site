@@ -1,0 +1,12 @@
+Options -Indexes
+#ErrorDocument 404 index.php?idurl=404
+DirectoryIndex index.php
+AddDefaultCharset utf-8
+
+#RewriteEngine On
+#RewriteCond %{HTTP_HOST} !^www\.(.*)$ [NC]
+#RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
+
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteRule ^(.*)$ index.php?idurl=$1 [L,QSA]
