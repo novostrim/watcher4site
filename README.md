@@ -1,2 +1,1 @@
-watcher4site
-============
+Watcher4site is a system, which allows you to keep track of all changes in files on your site. It allows you to find virus infiltrations on your site and all changes in files (scripts). It is freely distributed, and has open source code. It is easy to install and has a simple interface. Using this system will require PHP and MySQL.
