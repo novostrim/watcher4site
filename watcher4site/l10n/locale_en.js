@@ -29,6 +29,7 @@ var lng = {
 	err_login: "Incorrect username or password",
 	err_server: 'Server error ',
 	err_system: 'System error ',
+	err_write: 'It is impossible to write files into #temp#! Specify the write permission, restore current permission after the installation.',
 	error: 'Error',
 	example: 'For example',
 	finished: 'Check is complete',

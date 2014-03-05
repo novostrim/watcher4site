@@ -126,17 +126,28 @@ geapp.controller( 'InstallCtrl', function InstallCtrl($scope, $http ) {
     $scope.langlist = langlist;
     $scope.form = {};
     $scope.submit = function() {
-        $http.post('ajax/install.php', { form: $scope.form, lang: $scope.lng.code }).success(function(data) {
+        $http.post('ajax/waccess.php', {}).success(function(data) {
             if ( data.success )
             {
-                cfg.user = data.user;
-                document.location = '#/';
+                $http.post('ajax/install.php', { form: $scope.form, lang: $scope.lng.code }).success(function(data) {
+                    if ( data.success )
+                    {
+                        cfg.user = data.user;
+                        document.location = '#/';
+                    }
+                    else
+                    {
+                        cfg.temp = data.temp;
+                        $scope.msg_error( $scope.lng[ data.err ] + ( data.err == 'err_system' ? 
+                                         ' [' + data.code + ']' : '' ) );
+                    }
+                })
             }
             else
             {
                 cfg.temp = data.temp;
                 $scope.msg_error( $scope.lng[ data.err ] + ( data.err == 'err_system' ? 
-                                 ' [' + data.code + ']' : '' ) );
+                             ' [' + data.code + ']' : '' ) );
             }
         })
     }
