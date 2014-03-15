@@ -20,9 +20,15 @@ function send_mail( $name_to, $email_to, $subject, $body,
   {
       $body = "<html><head><title>$subject</title></head><body>$body</body></html>";
   }
-  $to = header_encode($name_to ). ' <' . $email_to . '>';
+  if ( $name_to )
+	$to = header_encode($name_to ). ' <' . $email_to . '>';
+  else
+	$to = $email_to;
   $subject = header_encode($subject);
-  $from =  header_encode($name_from).' <' . $email_from . '>';
+  if ( $name_from )
+      $from =  header_encode($name_from).' <' . $email_from . '>';
+  else
+      $from = $email_from;
   $headers = "From: $from\r\n";
   $headers .= "Content-type: text/$plain; charset=$send_charset\r\n";
   $headers .= "Mime-Version: 1.0\r\n";
