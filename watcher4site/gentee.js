@@ -78,7 +78,7 @@ geapp.controller( 'GenteeCtrl', function GenteeCtrl($scope, $location, $cookies,
     }*/
     $scope.changelng = function( langname )
     {
-        js_loadjs( cfg.appname + "/l10n/locale_" + langname + '.js', function(){
+         js_loadjs( cfg.appname.toLowerCase() + "/l10n/locale_" + langname + '.js', function(){
                 $rootScope.lng = lng; 
                 $rootScope.$apply()
         });
