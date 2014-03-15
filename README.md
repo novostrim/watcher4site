@@ -14,4 +14,4 @@ Have a bug or a feature request? [Please open a new issue](https://github.com/no
 
 ## Copyright and license
 
-Copyright 2014 Novostrim, JSC under MIT license.
+Copyright 2014 Novostrim, OOO under MIT license.
