@@ -25,7 +25,7 @@ if ( 1 )// $result['success'] )
 	$count = 0;
 	$dif = 0;
 	$task = $db->getrow("select * from ".CONF_PREFIX."_task order by id desc");
-	if ( $task )
+	if ( $ret && $task )
 	{
 		$qwhere = $db->parse("where idtask=?s && status>0", $task['id'] );
 		$count = $db->getone( "select count(*) from ?n as m ?p", CONF_PREFIX.'_files', $qwhere );
@@ -34,11 +34,9 @@ if ( 1 )// $result['success'] )
 		foreach ( $app as $iap )
 			$$iap['name'] = $iap['value'];
 		if ( $count && $count > $latestmod )
-		{
 			$dif = (int)$count - (int)$latestmod;
-		}
+		$db->query("update ?n set value=?s where name=?s", CONF_PREFIX.'_app', $count, 'latestmod' );
 	}
-	$db->query("update ?n set value=?s where name=?s", CONF_PREFIX.'_app', $count, 'latestmod' );
 	print "$ret=$count=$dif";
 	$test = (int)get('test');
 	if ( $test )
@@ -51,7 +49,7 @@ if ( 1 )// $result['success'] )
 		{
 			require_once "../lib/mail.php";
 			$emails = explode( ',', $nfyemail );
-			$body = $emailtext;
+			$body = $emailtext."<br>[$ret:$count:$dif]";
 			$from = 'noreplay@'.str_replace( "www.", '', CONF_HOST );
 			foreach ( $emails as $ie )
 				if ( $ie )
