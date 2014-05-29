@@ -5,7 +5,7 @@
 	License: MIT
 */
 
-require_once '../lib/ajax_common.php';
+require_once dirname( dirname( $_SERVER['SCRIPT_FILENAME'] )).'/lib/ajax_common.php';
 
 if ( 1 )// $result['success'] )
 {
