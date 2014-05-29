@@ -4,8 +4,8 @@
 	(c) 2014 Novostrim, OOO. http://www.novostrim.com
 	License: MIT
 */
-
-require_once dirname( dirname( $_SERVER['SCRIPT_FILENAME'] )).'/lib/ajax_common.php';
+$ldir = dirname( dirname( $_SERVER['SCRIPT_FILENAME'] ));
+require_once $ldir.'/lib/ajax_common.php';
 
 if ( 1 )// $result['success'] )
 {
@@ -47,7 +47,7 @@ if ( 1 )// $result['success'] )
 	{
 		if ( $nfyemail )
 		{
-			require_once "../lib/mail.php";
+			require_once $ldir."/lib/mail.php";
 			$emails = explode( ',', $nfyemail );
 			$body = $emailtext."<br>[$ret:$count:$dif]";
 			$from = 'noreplay@'.str_replace( "www.", '', CONF_HOST );
