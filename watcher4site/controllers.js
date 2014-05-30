@@ -124,7 +124,7 @@ function ReportCtrl($scope, $http, $routeSegment ) {
 
 geapp.controller( 'InstallCtrl', function InstallCtrl($scope, $http ) {
     $scope.langlist = langlist;
-    $scope.form = {};
+    $scope.form = { dbhost: 'localhost' };
     $scope.submit = function() {
         $http.post('ajax/waccess.php', {}).success(function(data) {
             if ( data.success )

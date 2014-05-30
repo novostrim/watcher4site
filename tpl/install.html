@@ -4,6 +4,7 @@
    <form class="form" ng-submit="submit()">
 	<table class="formtbl">
 		<tr><td colspan="2"><h2>{{lng.dbconnect}}</h2></td></tr>
+		<tr><td class="formtxt">{{lng.host}}: </td><td class="formval"><input type="text" ng-model="form.dbhost" class="form-control"></td></tr>
 		<tr><td class="formtxt">{{lng.dbname}}: </td><td class="formval"><input type="text" ng-model="form.db" required class="form-control"></td></tr>
 		<tr><td class="formtxt">{{lng.user}}: </td><td class="formval"><input type="text" ng-model="form.user" required class="form-control"></td></tr>
 		<tr><td class="formtxt">{{lng.password}}: </td><td class="formval"><input type="text" ng-model="form.pass" class="form-control"></td></tr>

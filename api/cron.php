@@ -50,6 +50,32 @@ if ( 1 )// $result['success'] )
 			require_once $ldir."/lib/mail.php";
 			$emails = explode( ',', $nfyemail );
 			$body = $emailtext."<br>[$ret:$count:$dif]";
+			$signs = array( 1 => '[-DEL]', 2 => '[*UPD]', 3 => '[+NEW]');
+			if ( $count < 20 )
+			{
+				$paths = array();
+				$kwhere = $db->parse("where idtask=?s && status>0", $task['id'] );
+				$flist = $db->getall( "select * from ?n as m ?p order by status desc, idowner, name limit 0,20", CONF_PREFIX.'_files', $kwhere );
+				foreach ( $flist as $item )
+				{
+					if ( $item['idowner'] )
+						if ( isset( $paths[ $item['idowner']] ))
+							$item['name'] = $paths[ $item['idowner']].'/'.$item['name'];
+						else
+							$item['name'] = getfullname( $item['idowner'] ).'/'.$item['name'];
+					$body .= "<br>".$signs[$item['status']]." $item[name]";
+				} 
+			}
+			else  
+			{
+				for ( $k=1; $k<=3; $k++ )				
+				{
+					$kwhere = $db->parse("where idtask=?s && status=?s", $task['id'], $k );
+					$kcount = $db->getone( "select count(*) from ?n as m ?p", CONF_PREFIX.'_files', $kwhere );
+					$body .= "<br>$signs[$k] =&gt; $kcount file(s)";
+				}
+			}
+
 			$from = 'noreplay@'.str_replace( "www.", '', CONF_HOST );
 			foreach ( $emails as $ie )
 				if ( $ie )

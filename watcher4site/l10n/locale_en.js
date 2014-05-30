@@ -34,6 +34,7 @@ var lng = {
 	example: 'For example',
 	finished: 'Check is complete',
 	hashcmt: 'By default, files are checked for time, size and access privelages. Checking md5-hash values is more secure, but significantly slower. ',
+	host: 'Host',
 	ignextcmt: 'You can enter file extension to check (separated by commas) ',
 	ignoreext: 'Ignore extensions',
 	ignorepaths: 'Ignore paths',

@@ -18,17 +18,6 @@ function reportlink( $page )
 	return $ret.( $urlparam ? '&' : '?').'p='.$page;
 }
 
-function getfullname( $idowner )
-{
-	global $db, $paths;
-
-	$owner = $db->getrow("select name,idowner from ?n where id=?s", CONF_PREFIX.'_files', $idowner );
-	$ret = '';
-	if ( $owner['idowner'])
-		$ret = getfullname( $owner['idowner'] ).'/';
-	return $ret.$owner['name'];
-}
-
 if ( $result['success'] )
 {
 	$task = $db->getrow("select * from ".CONF_PREFIX."_task order by id desc");

@@ -15,7 +15,8 @@ if ( file_exists( "conf.inc.php"))
 	require_once "conf.inc.php";
 	require_once "lib/extmysql.class.php";
 
-	$db = new ExtMySQL( array( 'db' => CONF_DB, 'user' => defined( 'CONF_USER' ) ? CONF_USER : '',
+	$db = new ExtMySQL( array( 'host' => defined( 'CONF_DBHOST' ) ? CONF_DBHOST : 'localhost',
+		         'db' => CONF_DB, 'user' => defined( 'CONF_USER' ) ? CONF_USER : '',
 		         'pass' => defined( 'CONF_PASS' ) ? CONF_PASS : '' ));
 
 	$dbpar = $db->getrow( "select * from ?n where id=?s && pass=?s", APP_DB, 

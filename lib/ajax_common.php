@@ -20,7 +20,19 @@ function api_error( $err, $temp ='' )
    	$result['temp'] = $temp;
 }
 
-$db = new ExtMySQL( array( 'db' => CONF_DB, 'user' => defined( 'CONF_USER' ) ? CONF_USER : '',
+function getfullname( $idowner )
+{
+	global $db, $paths;
+
+	$owner = $db->getrow("select name,idowner from ?n where id=?s", CONF_PREFIX.'_files', $idowner );
+	$ret = '';
+	if ( $owner['idowner'])
+		$ret = getfullname( $owner['idowner'] ).'/';
+	return $ret.$owner['name'];
+}
+
+$db = new ExtMySQL( array( 'host' => defined( 'CONF_DBHOST' ) ? CONF_DBHOST : 'localhost',
+	               'db' => CONF_DB, 'user' => defined( 'CONF_USER' ) ? CONF_USER : '',
 		         'pass' => defined( 'CONF_PASS' ) ? CONF_PASS : '' ));
 login();
 

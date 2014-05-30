@@ -83,6 +83,9 @@ if ( !file_exists( $filename ))
 		$form['prefix'] = $prefix;
 		$form['host'] = $_SERVER['HTTP_HOST'];
 		$form['docroot'] = $_SERVER['DOCUMENT_ROOT'];
+		if ( empty( $form['dbhost'] ))
+			$form['dbhost'] = 'localhost';
+
 		foreach ( $form as $kp => $ip )
 			$lines[] = "define( 'CONF_".strtoupper($kp)."', '$ip' );";
 //				$lines[] = '$CONF['."'$kp'] = '$ip';";
