@@ -15,7 +15,27 @@ $start = 0;
 $task = array();
 $ext = array();
 $ignext = array();
+$ignwild = array();
 $ignpath = array();
+
+function match_wildcard($source,$pattern) {
+    $pattern = preg_quote($pattern,'/');        
+    $pattern = str_replace( '\*' , '.*', $pattern);   
+    return preg_match( '/^' . $pattern . '$/i' , $source );
+}
+
+function is_ignore( $fname )
+{
+	global $ignwild;
+
+	if ( $ignwild )
+	{
+		foreach ( $ignwild as $iw )
+			if ( match_wildcard( $fname, $iw ))
+				return true;
+	}
+	return false;
+}
 
 function search_del( $idowner, $dir )
 {
@@ -47,6 +67,8 @@ function search_del( $idowner, $dir )
 				continue;
 			if ( $ignext && in_array( $extension, $ignext ))
 				continue;	
+			if ( is_ignore( $ifl['name'] ))
+				continue;
 			if ( !file_exists( $fname ))
 				$db->update( CONF_PREFIX.'_files', array( 'status' => STAT_DEL, 'idtask' => $task['id']), 
 					         array( 'nuptime=NOW()'), $ifl['id'] );
@@ -113,6 +135,8 @@ function scan_dir( $dir, $idowner, $newfld )
 		  			continue;
 		  		if ( $ignext && in_array( $extension, $ignext ))
 		  			continue;
+				if ( is_ignore( $entry ))
+					continue;		  		
 		  		$perm = fileperms( $name );
 		  		$size = filesize($name);
 		  		$time = filemtime($name);
@@ -164,7 +188,7 @@ function scan_dir( $dir, $idowner, $newfld )
 
 function watcher( $params = '' )
 {
-	global $db, $task, $ext, $ignpath, $ignext, $start;
+	global $db, $task, $ext, $ignpath, $ignext, $start, $ignwild;
 
 	$dbtask = CONF_PREFIX.'_task';
 	$default = array( 'ext' => '', 'hash' => 0, 'ignext' => '', 'ignpath' => '' );//, 'limit' => 10 );
@@ -203,7 +227,18 @@ function watcher( $params = '' )
 		$db->update( $dbtask, '', array('lastrun=NOW()'), $task['id'] );
 
 	$ext = $task['ext'] ? explode( ',', $task['ext'] ) : '';
-	$ignext = $task['ignext'] ? explode( ',', $task['ignext'] ) : '';
+	$ignwild = $task['ignext'] ? explode( ',', $task['ignext'] ) : '';
+	if ( $ignwild )
+	{
+		foreach ( $ignwild as $ik => $iv )
+		{
+			if ( strpos( $iv, '*' ) === false && strpos( $iv, '.' ) === false )
+			{
+				$ignext[] = $iv;
+				unset( $ignwild[$ik] );
+			}
+		}
+	}
 	$ignpath = $task['ignpath'] ? explode( ',', $task['ignpath'] ) : '';
 	if ( $ignpath )
 	{

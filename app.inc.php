@@ -11,7 +11,7 @@ define( 'APP_PREFIX', 'ws');
 
 $conf = array(
 	'appname' => 'Watcher4site',
-	'version' => '1.1',
+	'version' => '1.2',
 	'website' => 'www.novostrim.com',
 	'apphead' => 'Watcher<span style="color:#FF6A00;">4</span>site',
 );
