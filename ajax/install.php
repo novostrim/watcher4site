@@ -27,7 +27,9 @@ if ( !file_exists( $filename ))
 //	print "$wspath=".chmod( $wspath, 0777 );
 	try
 	{
-		$db = new ExtMySQL( array_merge( $form, array( 'errmode' => 'exception' )) );
+		$db = new ExtMySQL( array_merge(  array( 'host' => empty( $form['dbhost'] ) ? 'localhost' : $form['dbhost'],
+	               'db' => $form['db'], 'user' => $form['user'],
+		           'pass' => $form['pass'] ), array( 'errmode' => 'exception' )) );
 		$step = 'err_create';
 		define( 'CONF_DB', $form['db'] );
 		$tables = $db->tables();
