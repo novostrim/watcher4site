@@ -82,6 +82,8 @@ function scan_dir( $dir, $idowner, $newfld )
 	global $db, $task, $ext, $ignpath, $ignext, $start;
 
 	$d = dir($dir);
+	if ( $d === false )
+	   return true;
 	$ret = true;
 	$path = trim( substr( $dir, strlen( CONF_DOCROOT )), "/\\" );
 	while ( false !== ($entry = $d->read()))
