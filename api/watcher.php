@@ -83,7 +83,10 @@ function scan_dir( $dir, $idowner, $newfld )
 
 	$d = dir($dir);
 	if ( $d === false )
-	   return true;
+	{
+		search_del( $idowner, $dir );
+	    return true;
+	}
 	$ret = true;
 	$path = trim( substr( $dir, strlen( CONF_DOCROOT )), "/\\" );
 	while ( false !== ($entry = $d->read()))
@@ -114,11 +117,14 @@ function scan_dir( $dir, $idowner, $newfld )
 		  		{
 		  			$pars['isfolder'] = $newfld ? 2 : 1;
 					if ( !$newfld ) //&& $file['perm'] && $file['perm'] != $perm )
+					{
 			  			$pars['status'] = STAT_NEW;
-
+			  			$upd['status'] = STAT_NEW;
+			  		}
 		  			$idi = $db->insert( CONF_PREFIX.'_files', $pars, array('uptime=NOW()', 'nuptime=NOW()'), true );
 					$file = $db->getrow("select * from ?n where id=?s", CONF_PREFIX.'_files', $idi );
 		  		}
+
 		  		if ( !scan_dir( $name, $file['id'], $file['isfolder'] == 2 ))
 		  		{
 		  			$ret = false;
@@ -128,6 +134,8 @@ function scan_dir( $dir, $idowner, $newfld )
 		  			$upd['isfolder'] = 1;
 				if ( $file['perm'] && $file['perm'] != $perm )
 		  			$upd['status'] = STAT_MOD;
+		  		if ( $file && $file['status'] == STAT_NEW )
+		  			$upd['status'] = STAT_NEW;	
 				$db->update( CONF_PREFIX.'_files', $upd, array( 'nuptime=NOW()'), $file['id'] );
 		  	}
 		  	else
