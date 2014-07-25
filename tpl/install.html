@@ -1,18 +1,42 @@
 <div class="workarea" ng-controller="InstallCtrl" ng-show="module=='install'">
-	<div class="a-group"><a href="" ng-repeat="item in langlist" ng-click="changelng( item.code )" ng-class="{linkactive:item.code==lng.code}">{{item.native}}</a></div>
-	<h1>{{lng.installing}} </h1>
-   <form class="form" ng-submit="submit()">
-	<table class="formtbl">
-		<tr><td colspan="2"><h2>{{lng.dbconnect}}</h2></td></tr>
-		<tr><td class="formtxt">{{lng.host}}: </td><td class="formval"><input type="text" ng-model="form.dbhost" class="form-control"></td></tr>
-		<tr><td class="formtxt">{{lng.dbname}}: </td><td class="formval"><input type="text" ng-model="form.db" required class="form-control"></td></tr>
-		<tr><td class="formtxt">{{lng.user}}: </td><td class="formval"><input type="text" ng-model="form.user" required class="form-control"></td></tr>
-		<tr><td class="formtxt">{{lng.password}}: </td><td class="formval"><input type="text" ng-model="form.pass" class="form-control"></td></tr>
-		<tr><td colspan="2"><h2>{{lng.signup}}</h2></td></tr>
-		<tr><td class="formtxt">{{lng.password}}: </td><td class="formval"><input class="form-control" type="text" ng-model="form.psw" required></td></tr>
-		<tr><td></td><td class="formval"><input type="submit" value="{{lng.install}}" class="btn btn-primary"></td></tr>
-	</table>
+    <div class="a-group"><a href="" ng-repeat="item in langlist" ng-click="changelng( item.code )"
+                            ng-class="{linkactive:item.code==lng.code}">{{item.native}}</a></div>
+    <h1>{{lng.installing}} </h1>
+
+    <form class="form" ng-submit="submit()">
+        <table class="formtbl">
+            <tr>
+                <td colspan="2"><h2>{{lng.dbconnect}}</h2></td>
+            </tr>
+            <tr>
+                <td class="formtxt">{{lng.host}}:</td>
+                <td class="formval"><input type="text" ng-model="form.dbhost" class="form-control"></td>
+            </tr>
+            <tr>
+                <td class="formtxt">{{lng.dbname}}:</td>
+                <td class="formval"><input type="text" ng-model="form.db" required class="form-control"></td>
+            </tr>
+            <tr>
+                <td class="formtxt">{{lng.user}}:</td>
+                <td class="formval"><input type="text" ng-model="form.user" required class="form-control"></td>
+            </tr>
+            <tr>
+                <td class="formtxt">{{lng.password}}:</td>
+                <td class="formval"><input type="text" ng-model="form.pass" class="form-control"></td>
+            </tr>
+            <tr>
+                <td colspan="2"><h2>{{lng.signup}}</h2></td>
+            </tr>
+            <tr>
+                <td class="formtxt">{{lng.password}}:</td>
+                <td class="formval"><input class="form-control" type="text" ng-model="form.psw" required></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="formval"><input type="submit" value="{{lng.install}}" class="btn btn-primary"></td>
+            </tr>
+        </table>
 
 
-	</form>
+    </form>
 </div>
