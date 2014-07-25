@@ -18,7 +18,7 @@ if (file_exists("conf.inc.php")) {
                              'db'   => CONF_DB, 'user' => defined('CONF_USER') ? CONF_USER : '',
                              'pass' => defined('CONF_PASS') ? CONF_PASS : ''));
 
-    $dbpar = $db->getrow("select * from ?n where id=?s && pass=?s", APP_DB,
+    $dbpar = $db->getrow('select * from ?n where id=?s && pass=?s', APP_DB,
         CONF_DBID, pass_md5(CONF_PSW, true));
     if (!$dbpar) {
         print "System Error";
@@ -72,14 +72,11 @@ $vars = array(
 
 foreach ($vars as $kvar => $ivar) {
     $afrom[] = '{$' . $kvar . '}';
-    $ato[] = $ivar;
+    $ato[]   = $ivar;
 }
 
 header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
-header('Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0', FALSE);
+header('Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0', false);
 header('Pragma: no-cache');
 
-
-print str_replace($afrom, $ato, $template);
-
-?>
+echo str_replace($afrom, $ato, $template);

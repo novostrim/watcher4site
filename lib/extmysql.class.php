@@ -43,6 +43,3 @@ class ExtMySQL extends SafeMySQL
     }
 
 }
-
-
-?>

@@ -8,15 +8,16 @@
 require_once '../lib/ajax_common.php';
 
 $form = post('form');
-$USER = $db->getrow("select id, login,lang from ?n where pass=?s",
+$user = $db->getrow("select id, login,lang from ?n where pass=?s",
     CONF_PREFIX . '_users', pass_md5($form['psw'], true));
-if (!$USER)
+
+if (!$user) {
     $result['err'] = 'err_login';
-else {
+} else {
     $result['success'] = true;
-    $result['user'] = $USER;
+    $result['user'] = $user;
     cookie_set('pass', md5($form['psw']), 120);
-    cookie_set('iduser', $USER['id'], 120);
+    cookie_set('iduser', $user['id'], 120);
 }
-print json_encode($result);
-?>
+
+print_json($result);

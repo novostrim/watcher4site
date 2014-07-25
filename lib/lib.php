@@ -206,6 +206,15 @@ function url_params($ignore = '', $only = '')
     return $pars;
 }
 
+function print_json(array $data)
+{
+    header('Content-Type: application/json');
+
+    echo json_encode($data);
+
+    exit();
+}
+
 /*
 function lib_posts( $names, $named = false )
 {
@@ -228,4 +237,3 @@ function lib_get( $name, $default = '' )
 }
 */
 
-?>

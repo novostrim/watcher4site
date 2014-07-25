@@ -16,5 +16,5 @@ if (file_put_contents($wspath . '/test.inc.php', "<?php \r\n\r\n?>")) {
     $result['temp'] = $wspath;
 
 }
-print json_encode($result);
-?>
+
+print_json($result);

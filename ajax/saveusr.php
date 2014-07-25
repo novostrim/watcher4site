@@ -16,5 +16,5 @@ if ($result['success']) {
             cookie_set('pass', md5($ipass), 120);
     }
 }
-print json_encode($result);
-?>
+
+print_json($result);

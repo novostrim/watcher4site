@@ -96,5 +96,5 @@ if (!file_exists($filename)) {
         }
     }
 }
-print json_encode($result);
-?>
+
+print_json($result);
