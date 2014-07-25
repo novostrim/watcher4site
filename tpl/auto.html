@@ -1,25 +1,59 @@
-<div class="workarea" ng-controller="AutoCtrl" >
-<form class="form" ng-submit="save()">
-	<table class="formtbl">
-		<tr><td class="formtxt"><nobr>{{lng.cronscript}}</nobr><br><a href="{{form.urlscript}}" target="_blank">{{lng.test}}</a></td><td class="comment">
-			{{lng.croncmt}}</td></tr>
-		<tr><td colspan="2"><span class="form-control">{{form.script}}</span></td></td></tr>
-		<tr><td colspan="2"><h2>{{lng.notifymethod}}</h2></td></td></tr>
-		<tr><td class="formtxt">{{lng.email}}: </td><td class="formval">
-			<input type="text" class="form-control whuge" ng-model="form.nfyemail"></td></tr>
-		<tr><td></td><td class="comment">{{lng.nfyemail}}</td></td></tr>
-		<tr><td class="formtxt">{{lng.emailtext}}: </td><td class="formval">
-			<textarea class="form-control wbig" ng-model="form.emailtext"></textarea></td></tr>
-		<tr><td class="formtxt">{{lng.url}}: </td><td class="formval">
-			<input type="text" class="form-control whuge" ng-model="form.nfyurl"></td></tr>
-		<tr><td></td><td class="comment">{{lng.nfyurl}}  <br><i>http://www.mysite.com/php/sendsms.php
-			<br>http://www.mysite.com/notify/?watcher=1</i></td></td></tr>
-		<tr><td class="formtxt">{{lng.phpscript}}: </td><td class="formval">
-			<input type="text" class="form-control whuge" ng-model="form.nfyscript"></td></tr>
-		<tr><td></td><td class="comment">{{lng.nfyscript}}  <br><i>/php/sendsms.php</i></td></td></tr>
-		<tr><td class="formtxt"></td><td class="formval">
-			<input type="submit" value="{{lng.save}}" class="btn btn-primary"></td></tr>
-	</table>
-	</form>
-<div class="clear"></div>
+<div class="workarea" ng-controller="AutoCtrl">
+    <form class="form" ng-submit="save()">
+        <table class="formtbl">
+            <tr>
+                <td class="formtxt">
+                    <nobr>{{lng.cronscript}}</nobr>
+                    <br><a href="{{form.urlscript}}" target="_blank">{{lng.test}}</a></td>
+                <td class="comment">
+                    {{lng.croncmt}}
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2"><span class="form-control">{{form.script}}</span></td>
+                </td></tr>
+            <tr>
+                <td colspan="2"><h2>{{lng.notifymethod}}</h2></td>
+                </td></tr>
+            <tr>
+                <td class="formtxt">{{lng.email}}:</td>
+                <td class="formval">
+                    <input type="text" class="form-control whuge" ng-model="form.nfyemail"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="comment">{{lng.nfyemail}}</td>
+                </td></tr>
+            <tr>
+                <td class="formtxt">{{lng.emailtext}}:</td>
+                <td class="formval">
+                    <textarea class="form-control wbig" ng-model="form.emailtext"></textarea></td>
+            </tr>
+            <tr>
+                <td class="formtxt">{{lng.url}}:</td>
+                <td class="formval">
+                    <input type="text" class="form-control whuge" ng-model="form.nfyurl"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="comment">{{lng.nfyurl}} <br><i>http://www.mysite.com/php/sendsms.php
+                    <br>http://www.mysite.com/notify/?watcher=1</i></td>
+                </td></tr>
+            <tr>
+                <td class="formtxt">{{lng.phpscript}}:</td>
+                <td class="formval">
+                    <input type="text" class="form-control whuge" ng-model="form.nfyscript"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="comment">{{lng.nfyscript}} <br><i>/php/sendsms.php</i></td>
+                </td></tr>
+            <tr>
+                <td class="formtxt"></td>
+                <td class="formval">
+                    <input type="submit" value="{{lng.save}}" class="btn btn-primary"></td>
+            </tr>
+        </table>
+    </form>
+    <div class="clear"></div>
 </div> 

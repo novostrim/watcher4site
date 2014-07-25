@@ -1,31 +1,68 @@
-<div class="workarea" ng-controller="IndexCtrl" >
-<table cellspacing="0" cellpadding="0" border="0" ng-show="info.ok" class="tbl">
-	<tr><td align="right">{{lng.status}}:</td><td><span ng-show="info.ok==1">{{lng.finished}}</span>
-		<span ng-show="info.ok==2">{{lng.inproc}} <i class="fa fa-spinner fa-spin"></i> <a href="#" ng-click="breakcheck()">{{lng.breakcheck}}</a></span>
-		<span ng-show="info.ok==3">{{lng.notfinished}} <a href="#" ng-click="cont()">{{lng.cont}}</a></span></td></tr>
-	<tr><td align="right">{{lng.checkfiles}}:</td><td>{{info.numfiles}} [<a href="#/report" ng-show="info.changes">{{lng.changes}}: {{info.changes}}</a><span ng-show="info.changes==0">{{lng.nochanges}}</span>]</td></tr>
-	<tr><td align="right">{{lng.latestrun}}:</td><td>{{info.lastrun}}</td></tr>
-</table>
-<form class="form" ng-submit="start()">
-	<table class="formtbl">
-		<tr><td class="formtxt">{{lng.checkext}}: </td><td class="formval">
-			<input type="text" class="form-control wbig" ng-model="form.ext"></td></tr>
-		<tr><td colspan="2" class="comment">{{lng.checkextcmt}}<br>{{lng.example}}: <i>php,js,html,shtml,tpl</i></td></td></tr>
-		<tr><td class="formtxt">{{lng.comphash}}: </td><td class="formval">
-			<div ge-check="form.hash" ge-func="hashchange"></div>
-			</td></tr>
-		<tr><td colspan="2" class="comment">{{lng.hashcmt}}</td></td></tr>
-		<tr><td class="formtxt">{{lng.ignoreext}}: </td><td class="formval">
-			<input type="text" class="form-control wbig" ng-model="form.ignext"></td></tr>
-		<tr><td colspan="2" class="comment">{{lng.ignextcmt}} {{lng.example}}: <i>jpg,zip</i><br>
-		{{lng.ignextfiles}} {{lng.example}}: <i>tmp*.php,data.*,temp.php,*-x.tpl</i>
-		</td></td></tr>
-		<tr><td class="formtxt">{{lng.ignorepaths}}: </td><td class="formval">
-			<textarea class="form-control wbig" ng-model="form.ignpath"></textarea></td></tr>
-		<tr><td colspan="2" class="comment">{{lng.ignpathcmt}}<br><i>myfolder/images<br>files/temp/logs</i></td></td></tr>
-		<tr><td class="formtxt"></td><td class="formval">
-			<input type="submit" value="{{lng.startcheck}}" class="btn btn-primary"></td></tr>
-	</table>
-	</form>
-<div class="clear"></div>
+<div class="workarea" ng-controller="IndexCtrl">
+    <table cellspacing="0" cellpadding="0" border="0" ng-show="info.ok" class="tbl">
+        <tr>
+            <td align="right">{{lng.status}}:</td>
+            <td><span ng-show="info.ok==1">{{lng.finished}}</span>
+                <span ng-show="info.ok==2">{{lng.inproc}} <i class="fa fa-spinner fa-spin"></i> <a href="#"
+                                                                                                   ng-click="breakcheck()">{{lng.breakcheck}}</a></span>
+                <span ng-show="info.ok==3">{{lng.notfinished}} <a href="#" ng-click="cont()">{{lng.cont}}</a></span>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">{{lng.checkfiles}}:</td>
+            <td>{{info.numfiles}} [<a href="#/report" ng-show="info.changes">{{lng.changes}}: {{info.changes}}</a><span
+                    ng-show="info.changes==0">{{lng.nochanges}}</span>]
+            </td>
+        </tr>
+        <tr>
+            <td align="right">{{lng.latestrun}}:</td>
+            <td>{{info.lastrun}}</td>
+        </tr>
+    </table>
+    <form class="form" ng-submit="start()">
+        <table class="formtbl">
+            <tr>
+                <td class="formtxt">{{lng.checkext}}:</td>
+                <td class="formval">
+                    <input type="text" class="form-control wbig" ng-model="form.ext"></td>
+            </tr>
+            <tr>
+                <td colspan="2" class="comment">{{lng.checkextcmt}}<br>{{lng.example}}: <i>php,js,html,shtml,tpl</i>
+                </td>
+                </td></tr>
+            <tr>
+                <td class="formtxt">{{lng.comphash}}:</td>
+                <td class="formval">
+                    <div ge-check="form.hash" ge-func="hashchange"></div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="comment">{{lng.hashcmt}}</td>
+                </td></tr>
+            <tr>
+                <td class="formtxt">{{lng.ignoreext}}:</td>
+                <td class="formval">
+                    <input type="text" class="form-control wbig" ng-model="form.ignext"></td>
+            </tr>
+            <tr>
+                <td colspan="2" class="comment">{{lng.ignextcmt}} {{lng.example}}: <i>jpg,zip</i><br>
+                    {{lng.ignextfiles}} {{lng.example}}: <i>tmp*.php,data.*,temp.php,*-x.tpl</i>
+                </td>
+                </td></tr>
+            <tr>
+                <td class="formtxt">{{lng.ignorepaths}}:</td>
+                <td class="formval">
+                    <textarea class="form-control wbig" ng-model="form.ignpath"></textarea></td>
+            </tr>
+            <tr>
+                <td colspan="2" class="comment">{{lng.ignpathcmt}}<br><i>myfolder/images<br>files/temp/logs</i></td>
+                </td></tr>
+            <tr>
+                <td class="formtxt"></td>
+                <td class="formval">
+                    <input type="submit" value="{{lng.startcheck}}" class="btn btn-primary"></td>
+            </tr>
+        </table>
+    </form>
+    <div class="clear"></div>
 </div> 
