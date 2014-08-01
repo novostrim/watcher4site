@@ -5,8 +5,8 @@
    License: MIT
 */
 
-define( 'SITEURL', $_SERVER['HTTP_HOST'] );
-define( 'LOCALHOST', $_SERVER['SERVER_ADDR'] == '127.0.0.1' );
+define( 'SITEURL', isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : '' );
+define( 'LOCALHOST', isset($_SERVER['SERVER_ADDR']) && $_SERVER['SERVER_ADDR'] == '127.0.0.1' );
 
 define('FT_NUMBER', 1 );
 define('FT_VAR', 2 );
