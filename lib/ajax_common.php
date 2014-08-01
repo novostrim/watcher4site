@@ -6,7 +6,7 @@
 */
 
 $result = array( 'success'=> true, 'err' => 1, 'result' => 0, 'temp' => '' );
-$dir = dirname( dirname( $_SERVER['SCRIPT_FILENAME'] ));
+$dir = dirname( dirname( __FILE__ /*$_SERVER['SCRIPT_FILENAME']*/ ));
 require_once $dir.'/app.inc.php';
 require_once $dir.'/conf.inc.php';
 require_once 'lib.php';

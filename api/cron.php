@@ -4,7 +4,7 @@
 	(c) 2014 Novostrim, OOO. http://www.novostrim.com
 	License: MIT
 */
-$ldir = dirname( dirname( $_SERVER['SCRIPT_FILENAME'] ));
+$ldir = dirname( dirname( __FILE__ /*$_SERVER['SCRIPT_FILENAME']*/ ));
 require_once $ldir.'/lib/ajax_common.php';
 
 if ( 1 )// $result['success'] )
